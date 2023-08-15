@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
+# Migration to create the Like table.
 class CreateLikes < ActiveRecord::Migration[7.0]
   def change
-    create_table :Like do |t|
-      t.references :UserId, null: false, foreign_key: { to_table: :User }
-      t.references :PostId, null: false, foreign_key: { to_table: :Post }
-      t.datetime :CreatedAt
-      t.datetime :UpdatedAt
+    create_table :likes do |t|
+      t.references :user, null: false, foreign_key: { to_table: :users }
+      t.references :post, null: false, foreign_key: { to_table: :posts }
 
       t.timestamps
     end

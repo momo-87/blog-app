@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,60 +12,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_163236) do
+ActiveRecord::Schema[7.0].define(version: 20_230_815_163_236) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "Like", force: :cascade do |t|
-    t.bigint "UserId_id", null: false
-    t.bigint "PostId_id", null: false
-    t.datetime "CreatedAt"
-    t.datetime "UpdatedAt"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["PostId_id"], name: "index_Like_on_PostId_id"
-    t.index ["UserId_id"], name: "index_Like_on_UserId_id"
+  create_table 'comments', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'post_id', null: false
+    t.text 'text'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_comments_on_post_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "Post", force: :cascade do |t|
-    t.bigint "AuthorId_id", null: false
-    t.string "Title"
-    t.text "Text"
-    t.datetime "CreatedAt"
-    t.datetime "UpdatedAt"
-    t.integer "CommentsCounter"
-    t.integer "LikesCounter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["AuthorId_id"], name: "index_Post_on_AuthorId_id"
+  create_table 'likes', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'post_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_likes_on_post_id'
+    t.index ['user_id'], name: 'index_likes_on_user_id'
+  end
+end
+
+ActiveRecord::Schema.define(version: 20_230_815_163_236) do
+  create_table 'posts', force: :cascade do |t|
+    t.bigint 'author_id', null: false
+    t.string 'title'
+    t.text 'text'
+    t.integer 'comments_counter'
+    t.integer 'likes_counter'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['author_id'], name: 'index_posts_on_author_id'
   end
 
-  create_table "User", force: :cascade do |t|
-    t.string "Name"
-    t.string "Photo"
-    t.text "Bio"
-    t.datetime "UpdatedAt"
-    t.datetime "CreatedAt"
-    t.integer "PostsCounter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'photo'
+    t.text 'bio'
+    t.integer 'posts_counter'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "UserId_id", null: false
-    t.bigint "PostId_id", null: false
-    t.text "Text"
-    t.datetime "UpdatedAt"
-    t.datetime "CreatedAt"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["PostId_id"], name: "index_comments_on_PostId_id"
-    t.index ["UserId_id"], name: "index_comments_on_UserId_id"
-  end
-
-  add_foreign_key "Like", "Post", column: "PostId_id"
-  add_foreign_key "Like", "User", column: "UserId_id"
-  add_foreign_key "Post", "User", column: "AuthorId_id"
-  add_foreign_key "comments", "Post", column: "PostId_id"
-  add_foreign_key "comments", "User", column: "UserId_id"
+  add_foreign_key 'comments', 'posts'
+  add_foreign_key 'comments', 'users'
+  add_foreign_key 'likes', 'posts'
+  add_foreign_key 'likes', 'users'
+  add_foreign_key 'posts', 'users', column: 'author_id'
 end
