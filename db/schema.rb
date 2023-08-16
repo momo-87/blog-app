@@ -34,9 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_816_061_957) do
     t.index ['author_id'], name: 'index_likes_on_author_id'
     t.index ['post_id'], name: 'index_likes_on_post_id'
   end
-end
 
-ActiveRecord::Schema[7.0].define(version: 20_230_816_061_957) do
   create_table 'posts', force: :cascade do |t|
     t.bigint 'author_id', null: false
     t.string 'title'
