@@ -4,5 +4,5 @@ class Post < ApplicationRecord
   attr_accessor :comments_counter
   attr_accessor :likes_counter
 
-  belongs_to :user, foreign_key: :author_id
+  belongs_to :author, foreign_key: 'author_id', class_name: 'User'
 end
