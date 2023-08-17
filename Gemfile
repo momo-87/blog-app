@@ -70,6 +70,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 gem 'rubocop', '>= 1.0', '< 2.0'
