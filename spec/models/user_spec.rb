@@ -1,4 +1,4 @@
-require_relative '../rails_helper.rb'
+require_relative '../rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { described_class.new(name: 'Christian Momo', photo: nil, bio: nil, posts_counter: 5) }
@@ -20,9 +20,9 @@ RSpec.describe User, type: :model do
   describe '#three_most_recent_posts' do
     before do
       @post1 = user.posts.create(title: 'Post 1', text: 'Hello', comments_counter: 0, likes_counter: 0)
-      @post2 =  user.posts.create(title: 'Post 2', text: 'Hello', comments_counter: 0, likes_counter: 0)
-      @post3 =  user.posts.create(title: 'Post 3', text: 'Hello', comments_counter: 0, likes_counter: 0)
-      @post4 =  user.posts.create(title: 'Post 4', text: 'Hello', comments_counter: 0, likes_counter: 0)
+      @post2 = user.posts.create(title: 'Post 2', text: 'Hello', comments_counter: 0, likes_counter: 0)
+      @post3 = user.posts.create(title: 'Post 3', text: 'Hello', comments_counter: 0, likes_counter: 0)
+      @post4 = user.posts.create(title: 'Post 4', text: 'Hello', comments_counter: 0, likes_counter: 0)
     end
 
     it 'returns the three most recent posts for a given user' do
