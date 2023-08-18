@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'requires posts_counter to be a valid number' do
+    it 'requires posts_counter to be a positive integer' do
       user.posts_counter = -1
       expect(user).not_to be_valid
     end
@@ -25,8 +25,7 @@ RSpec.describe User, type: :model do
       @post4 =  user.posts.create(title: 'Post 4', text: 'Hello', comments_counter: 0, likes_counter: 0)
     end
 
-    it 'returns the three most recent posts' do
-      p @post1.valid?
+    it 'returns the three most recent posts for a given user' do
       most_recent_posts = user.three_most_recent_posts
       expect(most_recent_posts).to eq([@post4, @post3, @post2])
     end
