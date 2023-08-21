@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   #root for https://users/745
-  get '/users/:id', to: 'users#show' as: :user
+  get '/users/:id', to: 'users#show'
 
-  #root for https://users/745/post
-  get '/users/author_id/posts', to: 'posts#index' as: :user_posts
+  #root for https://users/745/posts
+  get '/users/:id/posts', to: 'posts#index'
 
   #root for https://users/745/posts/3
-  get '/users/author_id/posts/:id', to: 'posts#show' as: :user_post
+  get '/users/:id/posts/:post_id', to: 'posts#show'
 end
