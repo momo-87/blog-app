@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :request do
   end
 
   describe 'GET #show' do
-    let(:user) { User.create(name: 'Christian Momo', photo: nil, bio: nil, posts_counter: 0)}
+    let(:user) { User.create(name: 'Christian Momo', photo: nil, bio: nil, posts_counter: 0) }
 
     it 'returns a successful response' do
       get "/users/#{user.id}"

@@ -5,7 +5,6 @@ RSpec.describe PostsController, type: :request do
   let(:post) { user.posts.create(title: 'Post 1', text: 'Hello', comments_counter: 0, likes_counter: 0) }
 
   describe 'GET #index' do
-    
     it 'returns a successful response' do
       get "/users/#{user.id}/posts"
       expect(response).to have_http_status(:success)
@@ -23,7 +22,6 @@ RSpec.describe PostsController, type: :request do
   end
 
   describe 'GET #show' do
-
     it 'returns a successful response' do
       get "/users/#{user.id}/posts/#{post.id}"
       expect(response).to have_http_status(:success)
