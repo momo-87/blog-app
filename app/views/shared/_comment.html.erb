@@ -1,0 +1,8 @@
+<div class="border-solid border-4 border-black md:w-1/2 mx-auto w-full mb-5">
+    <% Comment.where(post_id: post.id).each do |comment| %>
+      <div class="flex gap-3 mt-4">
+        <div><%= User.find(comment.author_id).name %>:</div>
+        <div class="w-3/4"><%= comment.text %></div>
+      </div>
+    <% end %>
+</div>

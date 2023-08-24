@@ -1,0 +1,14 @@
+<!-- app/views/users/shared/_user.html.erb -->
+
+<div id="user" class="flex justify-between items-center w-full md:w-1/2 mx-auto mb-5">
+  
+  <div class="w-1/4 border-solid border-black border-4 h-full">
+    <img src="<%= user.photo %>" alt="User Photo">
+  </div>
+
+  <div class="w-4/6 border-solid border-black border-4">
+    <h1><%= user.name %></h1>
+    <div>Number of posts: <%=user.posts_counter %></div>
+  </div>
+
+</div>

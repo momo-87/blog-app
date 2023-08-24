@@ -33,3 +33,5 @@
 # Ignore node_modules
 node_modules
 instructions.txt
+/app/assets/builds/*
+!/app/assets/builds/.keep
