@@ -1,10 +1,10 @@
 <!-- app/views/users/show.html.erb -->
 
-<div class="flex flex-col w-full gap-y-5">
+<div class="flex flex-col w-full">
   <div id="userInfos">
         <%= render partial: 'shared/user', locals: {user: @user} %>
 
-        <div id="bio" class="border-4 border-black mt-4 md:w-1/2 mx-auto">
+        <div id="bio" class="border-4 border-black mt-4 md:w-1/2 mx-auto mb-5">
           <h2>Bio</h2>
           <p><%= @user.bio %></p>
         </div>
@@ -13,5 +13,7 @@
   <% @user.posts.each do |post| %>
     <%= render partial: 'shared/post', locals: {post: post} %>
   <% end %>
+
+  <button class="mx-auto font-bold w-5/12 md:w-1/10 mb-5 border-solid border-4 border-gray-500">See all posts</button>
 
 </div>

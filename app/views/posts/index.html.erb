@@ -1,11 +1,13 @@
 <!-- app/views/posts/index.html.erb -->
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>user posts</title>
-  </head>
-  <body>
-    <h1>Here is a list of posts for a given user</h1>
-  </body>
-</html>
+<div>
+  <%= render partial: 'shared/user', locals: {user: @user} %>
+
+  <% @posts.each do |post| %>
+    <%= render partial: 'shared/post', locals: {post: post} %>
+    <%= render partial: 'shared/comment', locals: {post: post} %>
+  <% end %>
+
+  <button class="mx-auto font-bold w-5/12 md:w-1/10 mb-5 border-solid border-4 border-gray-500">Pagination</button>
+
+</div>
