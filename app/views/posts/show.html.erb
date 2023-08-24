@@ -1,11 +1,20 @@
 <!-- app/views/posts/show.html.erb -->
+<div class="flex-col">
+  <div id="post" class="border-solid border-4 border-black md:w-1/2 mx-auto w-full mb-5">
+    <div class="flex justify-between">
+      <div>
+        <h2 class="font-bold ml-3"><%= @post.title %><span class="font-normal"> by <%= @user.name %></span></h2>
+      </div>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>post details</title>
-  </head>
-  <body>
-    <h1>Here are details for a given post</h1>
-  </body>
-</html>
+      <div class="mr-5">
+        <p>comments: <span class="font-bold"><%= @post.comments_counter%>, </span>Likes: <span class="font-bold"><%= @post.likes_counter %></span></p>
+      </div>
+    </div>
+
+    <div>
+      <p class="mt-5 ml-3" ><%= @post.text %></p>
+    </div>
+  </div>
+
+  <%= render partial: 'shared/comment', locals: {post: @post} %>
+</div>
