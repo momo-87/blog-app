@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    post = current_user.posts.new
+    post = Post.new
     respond_to do |format|
       format.html { render :new, locals: { post: post } }
     end
