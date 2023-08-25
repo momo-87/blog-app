@@ -4,8 +4,36 @@ class PostsController < ApplicationController
     @posts = @user.posts
   end
 
+  def new
+    post = current_user.posts.new
+    respond_to do |format|
+      format.html { render :new, locals: { post: post } }
+    end
+  end
+
   def show
     @user = User.find_by(id: params[:user_id])
     @post = @user.posts.find(params[:id])
+  end
+
+  def create
+    post = current_user.posts.new(post_params)
+
+    respond_to do |format|
+      format.html do
+        if post.save
+          redirect_to user_posts_url(user_id: current_user.id), notice: 'Post was successfully created.'
+        else
+          render :new
+        end
+      end
+    end
+
+  end
+  
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
