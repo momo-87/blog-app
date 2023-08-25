@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         if comment.save
-          redirect_to user_post_path(user_id: current_user.id, id: params[:post_id]), notice: 'Comment was successfully created.'
+          redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id]), notice: 'Comment was successfully created.'
         else
           render :new
         end

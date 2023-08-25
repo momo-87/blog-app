@@ -14,6 +14,8 @@ class PostsController < ApplicationController
   def show
     @user = User.find_by(id: params[:user_id])
     @post = @user.posts.find(params[:id])
+    @current_user = current_user
+    @like = Like.new
   end
 
   def create
