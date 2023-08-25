@@ -11,5 +11,4 @@ class LikesController < ApplicationController
     end
     redirect_to "/users/#{current_user.id}/posts/#{like.post.id}"
   end
-
 end
