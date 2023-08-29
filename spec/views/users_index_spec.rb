@@ -28,7 +28,7 @@ RSpec.describe 'Users', type: :system do
 
     find("a[id='#{@user1.id}']").click
     sleep(5)
-    
+
     current_path
     expect(current_path).to eq(user_path(@user1))
     expect(page).to have_content(@user1.name)
