@@ -22,6 +22,7 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_content(@post1.text)
     expect(page).to have_content(@post2.title)
     expect(page).to have_content(@post2.text)
+    expect(page).to have_content("See all posts")
   end
 
   it "redirects to post's index page when cliked" do
@@ -42,7 +43,6 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_content("Likes: 0")
     expect(page).to have_content(@user2.name)
     expect(page).to have_content(@comment.text)
-
   end
 
 end
