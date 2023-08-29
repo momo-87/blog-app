@@ -1,7 +1,7 @@
 <!-- app/views/posts/index.html.erb -->
 
 <div>
-  <%= render partial: 'shared/user', locals: {user: @user} %>
+  <%= render partial: 'shared/user_show', locals: {user: @user} %>
 
   <% @posts.each do |post| %>
     <%= render partial: 'shared/post', locals: {post: post} %>

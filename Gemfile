@@ -56,6 +56,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'faker'
+  gem 'meta_request'
   gem 'rails_live_reload'
   gem 'web-console'
 
@@ -80,3 +81,5 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'rails-controller-testing'
 
 gem 'tailwindcss-rails', '~> 2.0'
+
+gem 'devise', '~> 4.9'

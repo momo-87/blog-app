@@ -1,5 +1,5 @@
-<div id="post" class="border-solid border-4 border-black md:w-1/2 mx-auto w-full mt-5">
+<a id="<%= post.id %>" href="<%= user_path(@user.id) %>/posts/<%= post.id %>" class="border-solid border-4 border-black md:w-1/2 mx-auto w-full mt-5 block hover:border-red-600">
   <h2 class="font-bold ml-3"><%= post.title %></h2>
   <p class="mt-5 ml-3" ><%= post.text %></p>
-  <p class="mt-5 right-2 ml-3 mb-5">comments: <span class="font-bold"><%= post.comments_counter%>, </span>Likes: <span class="font-bold"><%= post.likes_counter %></span></p>
-</div>
+  <p class="mt-5 right-2 ml-3 mb-5">Comments: <span class="font-bold"><%= post.comments_counter%>, </span>Likes: <span class="font-bold"><%= post.likes_counter %></span></p>
+</a>
