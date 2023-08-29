@@ -49,4 +49,13 @@ RSpec.describe 'Users', type: :system do
     expect(page).to have_content(@user2.name)
     expect(page).to have_content(@comment.text)
   end
+
+  it 'redirects to post show page when clicking on a post' do
+    visit user_path(id: @user1.id)
+    find("a[id='#{@post1.id}']").click
+
+    sleep(5)
+    current_path
+    expect(current_path).to eq(user_post_path(user_id: @user1.id, id: @post1.id))
+  end
 end
