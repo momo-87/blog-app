@@ -25,9 +25,10 @@ RSpec.describe 'Users', type: :system do
 
   it "redirects to user's show page when cliked" do
     visit users_path
-    sleep(5)
 
     find("a[id='#{@user1.id}']").click
+    sleep(5)
+    
     current_path
     expect(current_path).to eq(user_path(@user1))
     expect(page).to have_content(@user1.name)
