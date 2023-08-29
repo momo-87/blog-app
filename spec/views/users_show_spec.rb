@@ -10,14 +10,18 @@ RSpec.describe "Users", type: :system do
     @comment = Comment.create(text: 'comment 1', author: @user2, post: @post1)
   end
 
-  it 'displays user information on the show page' do
+  it 'displays user information on the User show page' do
     visit user_path(id: @user1.id)
-    sleep(5)
 
     expect(page).to have_content(@user1.name)
     expect(page).to have_content(@user1.bio)
     expect(page).to have_selector("img[src='#{@user1.photo}']")
     expect(page).to have_content("Number of posts: 2") #user1 has 2 posts
+  end
+
+  it 'displays post information on the User show page' do
+    visit user_path(id: @user1.id)
+
     expect(page).to have_content(@post1.title)
     expect(page).to have_content(@post1.text)
     expect(page).to have_content(@post2.title)
@@ -25,7 +29,7 @@ RSpec.describe "Users", type: :system do
     expect(page).to have_content("See all posts")
   end
 
-  it "redirects to post's index page when cliked" do
+  it "redirects to post's index page when cliked on see all posts button" do
     visit user_path(id: @user1.id)
     
     find("a[id='see-all-posts']").click
