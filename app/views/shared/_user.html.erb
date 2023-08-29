@@ -1,14 +1,14 @@
 <!-- app/views/users/shared/_user.html.erb -->
 
-<a href="users/<%= user.id %>" id="<%= user.id %>" class="flex justify-between items-center w-full md:w-1/2 mx-auto mb-5 hover:border-solid hover:border-4 hover:border-red-600">
+<a href="<%= user_path(user.id) %>" id="<%= user.id %>" class="flex justify-between items-center w-full md:w-1/2 mx-auto mb-5 bg-white border-gray-200 rounded-lg shadow h-full hover:bg-gray-100 ">
   
-  <div class="w-1/4 border-solid border-black border-4 h-full">
+  <div class="w-1/4 rounded-lg shadow">
     <img src="<%= user.photo %>" alt="User Photo">
   </div>
 
-  <div class="w-4/6 border-solid border-black border-4">
-    <h1><%= user.name %></h1>
-    <div>Number of posts: <%=user.posts_counter %></div>
+  <div class="w-2/3 relative h-full">
+    <h1 class="md:text-4xl font-extrabold text-xl absolute md:top-11 md:left-11 top-2"><%= user.name %></h1>
+    <div class="absolute right-4 bottom-4">Number of posts: <span class="font-extrabold"><%=user.posts_counter %></span></div>
   </div>
 
 </a>
