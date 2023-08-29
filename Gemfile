@@ -56,9 +56,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'faker'
+  gem 'meta_request'
   gem 'rails_live_reload'
   gem 'web-console'
-  gem 'meta_request'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
