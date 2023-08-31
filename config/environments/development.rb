@@ -43,6 +43,12 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  #This ensures that email deliveries are enabled in the development environment for testing purposes
+  config.action_mailer.perform_deliveries = true
+
+  # Specify default URL for development
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
