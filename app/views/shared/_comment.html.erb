@@ -1,8 +1,11 @@
-<div class="border-solid border-4 border-black md:w-1/2 mx-auto w-full mb-5">
-    <% Comment.includes(:author).where(post_id: post.id).each do |comment| %>
-      <div class="flex gap-3 mt-4">
-        <div><%= comment.author.name %>:</div>
-        <div class="w-3/4"><%= comment.text %></div>
+<div class="border-4 border-black md:w-1/2 mx-auto w-full mb-5">
+  <% Comment.includes(:author).where(post_id: post.id).each do |comment| %>
+    <div class="flex gap-5 mt-4">
+      <div><%= comment.author.name %>:</div>
+      <div class="w-3/4 relative">
+        <%= comment.text %>
+        <%= link_to 'Delete', user_post_comment_path(@current_user.id, post.id, comment.id), class: "border-4 border-black block w-[80px] right-[20px]", data: { "turbo-method": :delete } if can? :destroy, comment %>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
