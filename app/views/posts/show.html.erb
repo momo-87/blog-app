@@ -15,10 +15,21 @@
       <p class="mt-5 ml-3" ><%= @post.text %></p>
     </div>
 
-    <div class="mb-5 mt-5 ml-3 flex gap-5">
-      <a class="border-solid border-4 border-black cursor-pointer"><%= render partial: 'shared/add_like' %></a>
-      <a href="/users/<%= @user.id %>/posts/<%= @post.id %>/comments/new" class="border-4 border-solid border-black"> New comment</a>
+    <div class="flex justify-between">
+      <div class="mb-5 mt-5 ml-3 flex gap-5">
+        <%= render partial: 'shared/add_like' %>
+
+        <a href="/users/<%= @user.id %>/posts/<%= @post.id %>/comments/new" class="border-4 border-black"> New comment</a>
+      </div>
+
+      <% if can? :destroy, @post %>
+      <div class="mb-5 mt-5 border-4 border-black mr-5">
+        <%=  link_to 'Delete', user_post_path(@current_user.id, @post.id), class: "cursor:pointer", data: { "turbo-method": :delete } %>
+      </div>
+      <% end %>
+
     </div>
+
   </div>
 
   <%= render partial: 'shared/comment', locals: {post: @post} %>

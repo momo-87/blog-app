@@ -20,7 +20,7 @@ quantity_likes = 20
 users = []
 
 for user_position in 1..quantity_users do
-  temp_user = User.create!(name: "User Number #{user_position}", photo: 'https://placehold.co/200x200', bio: Faker::Lorem.sentences(number: 12 + Random.rand(20)).join(' '), posts_counter: 0)
+  temp_user = User.create!(name: "User Number #{user_position}", photo: 'https://placehold.co/200x200', bio: Faker::Lorem.sentences(number: 12 + Random.rand(20)).join(' '),  email: "user#{user_position}@blogapp.com", password: "blogapp#{user_position}", posts_counter: 0)
   temp_user.skip_confirmation!
   users << temp_user
 end
