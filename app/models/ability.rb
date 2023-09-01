@@ -5,11 +5,13 @@ class Ability
     user ||= User.new
 
     if user.role == 'admin'
-      can :destroy, Post
-      can :create, Like
-      can :destroy, Comment
+      can :manage, Post
+      can :manage, Like
+      can :manage, Comment
     else
+      can %i[create read update], Post
       can :destroy, Post, author_id: user.id
+      can %i[create read update], Comment
       can :destroy, Comment, author_id: user.id
     end
 
