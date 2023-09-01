@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def show
     @user = User.find_by(id: params[:user_id])
     @post = @user.posts.find(params[:id])
-    @current_user = current_user
+    @currrent = current_user
     @like = Like.new
   end
 
@@ -30,6 +30,13 @@ class PostsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    puts "hello"
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_path(@post.author_id), notice: 'Post was successfully deleted.'
   end
 
   private

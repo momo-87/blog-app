@@ -1,3 +1,7 @@
-<%= form_with url: "/users/#{@current_user.id}/posts/#{@post.id}/likes", model: @like do |form| %>
-  <%= form.submit 'Like', class: 'px-4 py-2 border-2 border-black cursor:pointer' %>
+<% if can? :create, @like %>
+  <a class="border-4 border-black cursor-pointer">
+      <%= form_with url: "/users/#{@current_user.id}/posts/#{@post.id}/likes", model: @like do |form| %>
+        <%= form.submit 'Like', class: 'px-4 py-2 border-2 border-black cursor:pointer' %>
+      <% end %>
+  </a>
 <% end %>
