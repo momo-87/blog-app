@@ -11,6 +11,7 @@ class Ability
       can :create, Like
     else
     can :destroy, Post, author_id: user.id
+    can :destroy, Comment, author_id: user.id
     end
 
     if user.persisted?
