@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    puts "hello"
+    puts 'hello'
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(@post.author_id), notice: 'Post was successfully deleted.'
