@@ -12,4 +12,12 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
   end
+
+# Define routes for API
+  namespace :api do
+    resources :users, only: [:index, :show] do
+      resources :posts, only: [:index]
+    end
+  end
 end
+
