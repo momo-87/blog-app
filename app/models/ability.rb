@@ -3,20 +3,16 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-
-    if user.role == 'admin'
-      can :manage, Post
-      can :manage, Like
-      can :manage, Comment
-    else
-      can %i[create read update], Post
-      can :destroy, Post, author_id: user.id
-      can %i[create read update], Comment
-      can :destroy, Comment, author_id: user.id
-    end
+    can :read, Post
+    can :read, Comment
 
     return unless user.persisted?
+      can :create, Comment
+      can :manage, Post, author_id: user.id
+      can :manage, Comment, author_id: user.id
+      can :create, Like
 
-    can :create, Like
+    return unless user.role == 'admin'
+      can :manage, :all
   end
 end

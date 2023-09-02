@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     @currrent = current_user
     @like = Like.new
+    @comment = Comment.new
   end
 
   def create

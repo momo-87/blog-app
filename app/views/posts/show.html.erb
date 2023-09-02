@@ -19,7 +19,7 @@
       <div class="mb-5 mt-5 ml-3 flex gap-5">
         <%= render partial: 'shared/add_like' %>
 
-        <a href="/users/<%= @user.id %>/posts/<%= @post.id %>/comments/new" class="border-4 border-black"> New comment</a>
+        <%= link_to 'New comment', new_user_post_comment_path(@user.id, @post.id), class: "cursor:pointer border-4 border-black", method: :get if can? :create, @comment %>
       </div>
 
       <% if can? :destroy, @post %>
