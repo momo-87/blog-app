@@ -16,16 +16,16 @@ RSpec.describe 'Comments API', type: :request do
 
       response '200', 'list of comments' do
         schema type: :array,
-          items: {
-            type: :object,
-            properties: {
-              id: { type: :integer },
-              text: { type: :string },
-              created_at: { type: :string, format: 'date-time' },
-              updated_at: { type: :string, format: 'date-time' }
-            },
-            required: ['id', 'text', 'created_at', 'updated_at']
-          }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   text: { type: :string },
+                   created_at: { type: :string, format: 'date-time' },
+                   updated_at: { type: :string, format: 'date-time' }
+                 },
+                 required: %w[id text created_at updated_at]
+               }
 
         run_test! do
           expect(response).to have_http_status(200)

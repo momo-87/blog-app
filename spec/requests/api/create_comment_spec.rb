@@ -26,13 +26,13 @@ describe 'API::Comments', type: :request do
 
       response '201', 'comment created' do
         schema type: :object,
-          properties: {
-            id: { type: :integer },
-            text: { type: :string },
-            created_at: { type: :string, format: 'date-time' },
-            updated_at: { type: :string, format: 'date-time' }
-          },
-          required: ['id', 'text', 'created_at', 'updated_at']
+               properties: {
+                 id: { type: :integer },
+                 text: { type: :string },
+                 created_at: { type: :string, format: 'date-time' },
+                 updated_at: { type: :string, format: 'date-time' }
+               },
+               required: %w[id text created_at updated_at]
 
         run_test! do
           expect(JSON.parse(response.body)).to include('id', 'text', 'created_at', 'updated_at')
@@ -44,15 +44,15 @@ describe 'API::Comments', type: :request do
         let(:comment) { { text: '' } }
 
         schema type: :object,
-          properties: {
-            errors: {
-              type: :array,
-              items: {
-                type: :string
-              }
-            }
-          },
-          required: ['errors']
+               properties: {
+                 errors: {
+                   type: :array,
+                   items: {
+                     type: :string
+                   }
+                 }
+               },
+               required: ['errors']
 
         run_test! do
           expect(JSON.parse(response.body)).to include('errors')

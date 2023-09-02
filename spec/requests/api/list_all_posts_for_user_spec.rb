@@ -9,22 +9,22 @@ RSpec.describe 'Posts API', type: :request do
       produces 'application/json'
 
       let(:user) { create(:user) }
-      let!(:posts) { create_list(:post, 3, user: user) }
+      let!(:posts) { create_list(:post, 3, user:) }
       let(:user_id) { user.id }
 
       response '200', 'list of posts' do
         schema type: :array,
-          items: {
-            type: :object,
-            properties: {
-              id: { type: :integer },
-              title: { type: :string },
-              text: { type: :string },
-              created_at: { type: :string, format: 'date-time' },
-              updated_at: { type: :string, format: 'date-time' }
-            },
-            required: ['id', 'title', 'text', 'created_at', 'updated_at']
-          }
+               items: {
+                 type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   title: { type: :string },
+                   text: { type: :string },
+                   created_at: { type: :string, format: 'date-time' },
+                   updated_at: { type: :string, format: 'date-time' }
+                 },
+                 required: %w[id title text created_at updated_at]
+               }
 
         run_test! do
           expect(response).to have_http_status(200)
