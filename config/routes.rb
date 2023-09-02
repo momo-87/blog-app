@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 # Define routes for API
   namespace :api do
     resources :users, only: [:index, :show] do
-      resources :posts, only: [:index]
+      resources :posts, only: [:index] do
+        resources :comments, only: [:index]
+      end
     end
   end
 end
