@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.7'
@@ -57,7 +57,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'faker'
   gem 'meta_request'
-  gem 'rails_live_reload'
+  # gem 'rails_live_reload'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -87,3 +87,5 @@ gem 'devise', '~> 4.9'
 gem 'cancancan'
 
 gem 'rswag'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
