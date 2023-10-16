@@ -76,31 +76,29 @@
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
->To get a local copy up and running, follow these steps.
+To get a local copy up and running, follow these steps:
 
 ### Prerequisites
-1. Interactive Ruby shell (IRB).
-2. Code Editor.
-3. Git-smc.
+In order to run this project you need:
+- A browser of you choice.
+- A text editor of your choice.
+- Install ruby gem and depencies on your local system
+- Install Postgresql
 
 ### Setup
-> To clone this repository to your desired folder, run this command:
-```sh
-  cd my-folder
+
+Clone this repository to your desired folder:
+
+- Use the following Commands:
   git clone https://github.com/momo-87/blog-app.git
-```
-
-### Install
-> Run this command:
-```sh
-  cd my-project
-  bundle install
-```
-
+  cd recipe-app
 ### Usage
-> Run the code in the files person.rb, student.rb and teacher.rb
+- bundle install
+- rails s
 ### Run tests
-> comming soon
+- Run the following script and style test:
+<!---To be done-->
+
 <!-- ### Deployment
 > npm run build -->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
